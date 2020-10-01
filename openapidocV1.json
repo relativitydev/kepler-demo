@@ -1,0 +1,129 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "KeplerDemo.Interfaces",
+    "description": "KeplerDemo.Interfaces",
+  },
+  "servers": [
+    {
+      "url": "/Relativity.REST/api",
+      "description": "The URL prefix for all Kepler services"
+    }
+  ],
+  "paths": {
+    "/Demo/v1/WorkspaceName/workspace/{workspaceID}": {
+      "get": {
+        "tags": [
+          "Demo Module v1"
+        ],
+        "description": "[Public] IWorkspaceName",
+        "operationId": "KeplerDemo.Interfaces.Demo.v1.IWorkspaceName.GetWorkspaceNameAsync",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-CSRF-Header"
+          },
+          {
+            "$ref": "#/components/parameters/workspaceID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No description set"
+          }
+        }
+      }
+    },
+    "/Demo/v1/WorkspaceName/workspace?{limit}": {
+      "post": {
+        "tags": [
+          "Demo Module v1"
+        ],
+        "summary": "",
+        "description": "[Public] IWorkspaceName",
+        "operationId": "KeplerDemo.Interfaces.Demo.v1.IWorkspaceName.QueryWorkspaceByNameAsync",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-CSRF-Header"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryWorkspaceByNameAsync"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "No description set"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetWorkspaceNameAsync": {
+        "title": "GetWorkspaceNameAsync",
+        "description": ""
+      },
+      "QueryWorkspaceByNameAsync": {
+        "title": "QueryWorkspaceByNameAsync",
+        "required": [
+          "queryString"
+        ],
+        "properties": {
+          "queryString": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "description": ""
+      }
+    },
+    "parameters": {
+      "X-CSRF-Header": {
+        "name": "X-CSRF-Header",
+        "in": "header",
+        "description": "Required CSRF header for any KeplerService. *Note: Actual string value does not matter*. ",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "System.String",
+          "default": "."
+        }
+      },
+      "workspaceID": {
+        "name": "workspaceID",
+        "in": "path",
+        "description": "No description set for this parameter",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "limit": {
+        "name": "limit",
+        "in": "path",
+        "description": "No description set for this parameter",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "KeplerDemo.Interfaces.Demo.v1.IWorkspaceName",
+      "description": ""
+    }
+  ]
+}
